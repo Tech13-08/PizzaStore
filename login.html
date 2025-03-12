@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pizza Store - Login</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Login to Pizza Store</h1>
+        <a href="index.html" class="back-link">Back to Home</a>
+      </header>
+
+      <main>
+        <div class="card">
+          <form id="loginForm">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Enter your username"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your password"
+                required
+              />
+            </div>
+
+            <div class="button-group">
+              <button type="submit" class="btn primary-btn">Login</button>
+            </div>
+          </form>
+
+          <div id="notification" class="notification"></div>
+
+          <div class="form-footer">
+            <p>
+              Don't have an account? <a href="register.html">Register here</a>
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Pizza Store. All rights reserved.</p>
+      </footer>
+    </div>
+
+    <script src="scripts/auth.js"></script>
+  </body>
+</html>

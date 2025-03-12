@@ -1,0 +1,201 @@
+/* Dashboard Styles */
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebar .logo h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu ul li {
+  margin-bottom: 10px;
+}
+
+.nav-menu ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1em;
+  display: block;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav-menu ul li a:hover,
+.nav-menu ul li a.active {
+  background-color: #007bff;
+}
+
+.user-info {
+  margin-top: 20px;
+}
+
+.user-info p {
+  margin: 5px 0;
+}
+
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.dashboard-section {
+  display: none;
+}
+
+.dashboard-section.active {
+  display: block;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-items-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.menu-items-container th,
+.menu-items-container td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.menu-items-container th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.order-item-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.order-summary {
+  margin-top: 20px;
+}
+
+.orders-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.orders-list th,
+.orders-list td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.orders-list th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.order-details {
+  margin-top: 20px;
+}
+
+.order-details table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-details th,
+.order-details td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.order-details th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.stores-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.stores-list th,
+.stores-list td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.stores-list th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.update-status-form {
+  margin-top: 20px;
+}
+
+.update-status-form table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.update-status-form th,
+.update-status-form td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.update-status-form th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.menu-actions {
+  margin-bottom: 20px;
+}
+
+.menu-item-form {
+  margin-top: 20px;
+}
+
+.users-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users-list th,
+.users-list td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.users-list th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.user-update-form {
+  margin-top: 20px;
+}
