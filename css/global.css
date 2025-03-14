@@ -18,6 +18,9 @@
 body {
   background-color: var(--light-color);
   color: var(--secondary-color);
+  background-image: url("../assets/pizza_background.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .page {

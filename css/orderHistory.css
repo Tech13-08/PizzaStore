@@ -44,7 +44,7 @@
 .order-list-item {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Ensures spacing */
+  justify-content: space-between;
   background-color: white;
   border-radius: 8px;
   padding: 1rem;

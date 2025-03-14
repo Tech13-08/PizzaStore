@@ -5,7 +5,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: white;
+  background-color: var(--primary-dark);
   box-shadow: var(--box-shadow);
   z-index: 100;
 }
@@ -14,7 +14,7 @@
   margin-top: 1rem;
   font-size: 2rem;
   font-weight: bold;
-  color: var(--primary-color);
+  color: var(--light-color);
   background: none;
   border: none;
   cursor: pointer;
@@ -25,7 +25,7 @@
 .nav-toggle {
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--secondary-color);
+  color: var(--light-color);
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
@@ -36,6 +36,16 @@
   align-items: center;
   margin-top: 2rem;
   padding: 0.5rem;
+}
+
+.checkout-nav-container button {
+  background-color: var(--light-color);
+  color: var(--primary-color);
+}
+
+.checkout-nav-container button:hover {
+  background-color: var(--gray-light);
+  color: var(--primary-dark);
 }
 
 .sidebar {
@@ -105,6 +115,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: white;
 }
 
 .menu-grid {
@@ -163,7 +174,7 @@
 
 .filter-group label {
   font-weight: bold;
-  color: var(--secondary-color);
+  color: var(--light-color);
 }
 
 .filter-group select,
