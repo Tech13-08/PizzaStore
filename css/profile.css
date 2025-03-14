@@ -1,0 +1,54 @@
+.profile-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.profile-container label {
+  display: block;
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+
+.profile-container input {
+  width: 100%;
+  padding: 0.5rem;
+  margin-top: 0.2rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.profile-container button {
+  margin: 1rem auto 0;
+  display: block;
+}
+
+#manager-profile-search {
+  margin-bottom: 1.5rem;
+}
+
+#manager-profile-search label {
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+#manager-profile-search input {
+  padding: 0.5rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+}
+
+#manager-profile-search button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}

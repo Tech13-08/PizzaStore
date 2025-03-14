@@ -3,29 +3,410 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pizza Store - Welcome</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Pizza Store</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+    <link rel="stylesheet" href="css/checkout.css" />
+    <link rel="stylesheet" href="css/profile.css" />
+    <link rel="stylesheet" href="css/orderHistory.css" />
+    <link rel="stylesheet" href="css/modals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script>
+      const projectTitle = "Delicious Pizza";
+    </script>
   </head>
   <body>
-    <div class="container">
-      <header>
-        <h1>Welcome to Pizza Store</h1>
-        <p>Your one-stop destination for delicious pizza and more!</p>
-      </header>
-
-      <main>
-        <div class="card">
-          <h2>Get Started</h2>
-          <div class="button-group">
-            <a href="login.html" class="btn primary-btn">Login</a>
-            <a href="register.html" class="btn secondary-btn">Register</a>
+    <div id="app">
+      <!-- ==================== INDEX PAGE ==================== -->
+      <div id="landing-page" class="page">
+        <div class="hero">
+          <h1>
+            <script>
+              document.write(projectTitle);
+            </script>
+          </h1>
+          <p>Handcrafted with love since 1990</p>
+          <div id="auth-buttons">
+            <button id="login-button" class="primary-button">Login</button>
+            <button id="signup-button" class="secondary-button">Sign Up</button>
+          </div>
+          <div id="logged-buttons" style="display: none">
+            <button id="order-button" class="primary-button">Order Now</button>
+            <button id="logout-button" class="secondary-button">Logout</button>
           </div>
         </div>
-      </main>
+      </div>
 
-      <footer>
-        <p>&copy; 2025 Pizza Store. All rights reserved.</p>
-      </footer>
+      <!-- ==================== DASHBOARD PAGE ==================== -->
+      <div id="dashboard-page" class="page" style="display: none">
+        <header class="sticky-header">
+          <button class="logo" id="index-button">
+            <script>
+              document.write(projectTitle);
+            </script>
+          </button>
+          <div class="checkout-nav-container">
+            <div class="checkout-button-container">
+              <button id="checkout-button" class="primary-button">
+                Checkout
+              </button>
+            </div>
+            <div class="nav-toggle">
+              <i class="fas fa-bars"></i>
+            </div>
+          </div>
+        </header>
+
+        <div class="sidebar" id="sidebar">
+          <div class="sidebar-header">
+            <div class="close-sidebar">
+              <i class="fas fa-times"></i>
+            </div>
+          </div>
+          <ul class="sidebar-menu">
+            <li><a href="#" id="view-profile">My Profile</a></li>
+            <li><a href="#" id="view-orders">Order History</a></li>
+          </ul>
+        </div>
+
+        <div class="overlay" id="overlay"></div>
+
+        <main class="dashboard-container">
+          <div class="menu-header">
+            <h2>Our Menu</h2>
+
+            <div id="manager-actions" style="display: none">
+              <button id="add-item-button" class="primary-button">
+                Add Item
+              </button>
+            </div>
+          </div>
+
+          <div class="filters">
+            <div class="filter-group">
+              <label for="type-filter">Type:</label>
+              <select id="type-filter">
+                <option value="">All</option>
+                <option value="entree">Entrees</option>
+                <option value="drinks">Drinks</option>
+                <option value="sides">Sides</option>
+              </select>
+            </div>
+
+            <div class="filter-group">
+              <label for="max-price-filter">Max Price:</label>
+              <input
+                type="text"
+                id="max-price-filter"
+                placeholder="Enter max price"
+              />
+            </div>
+
+            <div class="filter-group">
+              <label for="sort-order-filter">Sort Order:</label>
+              <select id="sort-order-filter">
+                <option value="ASC">Price Low to High</option>
+                <option value="DESC">Price High to Low</option>
+              </select>
+            </div>
+
+            <button id="apply-filters" class="primary-button">
+              Apply Filters
+            </button>
+            <button id="clear-filters" class="primary-button">
+              Clear Filters
+            </button>
+          </div>
+
+          <div id="menu-grid" class="menu-grid"></div>
+        </main>
+      </div>
+      <!-- ==================== CHECKOUT PAGE ==================== -->
+      <div id="checkout-page" class="page" style="display: none">
+        <header class="sticky-header">
+          <button class="logo" id="checkout-menu-button">
+            <script>
+              document.write(projectTitle);
+            </script>
+          </button>
+        </header>
+        <main class="checkout-container">
+          <h2>Your Order</h2>
+          <div id="store-selection">
+            <h3>Select Store</h3>
+            <div class="dropdown-container">
+              <input
+                type="text"
+                id="store-search"
+                placeholder="Search for a store..."
+                class="store-search-box"
+              />
+              <ul id="store-dropdown" class="dropdown-list"></ul>
+            </div>
+          </div>
+          <div id="order-items" class="order-items"></div>
+          <div class="order-summary">
+            <div class="total">Total: $<span id="order-total">0.00</span></div>
+            <button id="place-order-button" class="primary-button">
+              Place Order
+            </button>
+          </div>
+        </main>
+      </div>
+
+      <!-- ==================== PROFILE PAGE ==================== -->
+      <div id="profile-page" class="page" style="display: none">
+        <header class="sticky-header">
+          <button class="logo" id="profile-menu-button">
+            <script>
+              document.write(projectTitle);
+            </script>
+          </button>
+        </header>
+
+        <main class="profile-container">
+          <h2>My Profile</h2>
+          <div id="manager-profile-search" style="display: none">
+            <label for="profile-search-username">Search User:</label>
+            <input
+              type="text"
+              id="profile-search-username"
+              placeholder="Enter username"
+            />
+            <button id="profile-search-user-button" class="primary-button">
+              Search
+            </button>
+          </div>
+          <form id="profile-form">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" />
+
+            <label for="role">Role:</label>
+            <input type="text" id="role" name="role" />
+
+            <label for="phone">Phone Number:</label>
+            <input type="text" id="phone" name="phone" />
+
+            <label for="favorite-items">Favorite Items:</label>
+            <input type="text" id="favorite-items" name="favorite-items" />
+
+            <label for="password">New Password:</label>
+            <input type="password" id="password" name="password" />
+
+            <button type="submit" class="primary-button">Update Profile</button>
+          </form>
+        </main>
+      </div>
+
+      <!-- ==================== ORDER HISTORY PAGE ==================== -->
+      <div id="order-history-page" class="page" style="display: none">
+        <header class="sticky-header">
+          <button class="logo" id="order-menu-button">
+            <script>
+              document.write(projectTitle);
+            </script>
+          </button>
+        </header>
+        <main class="order-history-container">
+          <h2>Order History</h2>
+          <div id="manager-order-search" style="display: none">
+            <label for="order-search-username">Search User:</label>
+            <input
+              type="text"
+              id="order-search-username"
+              placeholder="Enter username"
+            />
+            <button id="order-search-user-button" class="primary-button">
+              Search
+            </button>
+          </div>
+          <div class="tabs">
+            <button class="tab-button active" data-tab="recent">
+              Your Recent Orders
+            </button>
+            <button class="tab-button" data-tab="all">All Your Orders</button>
+          </div>
+          <div id="orders-list" class="orders-list"></div>
+        </main>
+      </div>
+
+      <!-- ==================== MODALS ==================== -->
+      <!-- ITEM DETAIL MODAL -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="modal-item-name"></h2>
+          <p id="modal-item-description"></p>
+          <p>Type: <span id="modal-item-type"></span></p>
+          <p>Price: $<span id="modal-item-price"></span></p>
+          <p>Ingredients: <span id="modal-item-ingredients"></span></p>
+          <div class="quantity-control">
+            <button id="decrease-quantity" class="quantity-button" disabled>
+              -
+            </button>
+            <span id="quantity-display">0</span>
+            <button id="increase-quantity" class="quantity-button">+</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Add Item Modal -->
+      <div id="add-item-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add Item</h2>
+          <form id="add-item-form">
+            <div class="form-group">
+              <label for="add-item-name">Name:</label>
+              <input type="text" id="add-item-name" required />
+            </div>
+            <div class="form-group">
+              <label for="add-item-ingredients">Ingredients:</label>
+              <input type="text" id="add-item-ingredients" required />
+            </div>
+            <div class="form-group">
+              <label for="add-item-type">Type:</label>
+              <select id="add-item-type">
+                <option value="entree">Entree</option>
+                <option value="drinks">Drinks</option>
+                <option value="sides">Sides</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="add-item-price">Price:</label>
+              <input type="number" id="add-item-price" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="add-item-description">Description:</label>
+              <textarea id="add-item-description" required></textarea>
+            </div>
+            <button type="submit" class="primary-button">Add Item</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Edit Item Modal -->
+      <div id="edit-item-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Edit Item</h2>
+          <form id="edit-item-form">
+            <div class="form-group">
+              <label for="edit-item-name">Name:</label>
+              <input type="text" id="edit-item-name" required />
+            </div>
+            <div class="form-group">
+              <label for="edit-item-ingredients">Ingredients:</label>
+              <input type="text" id="edit-item-ingredients" required />
+            </div>
+            <div class="form-group">
+              <label>Type:</label>
+              <div class="radio-options">
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="edit-item-type"
+                    value="entree"
+                    required
+                  />
+                  <span class="radio-circle"></span>
+                  Entree
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="edit-item-type"
+                    value="drinks"
+                    required
+                  />
+                  <span class="radio-circle"></span>
+                  Drinks
+                </label>
+                <label class="radio-option">
+                  <input
+                    type="radio"
+                    name="edit-item-type"
+                    value="sides"
+                    required
+                  />
+                  <span class="radio-circle"></span>
+                  Sides
+                </label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="edit-item-price">Price:</label>
+              <input type="number" id="edit-item-price" step="0.01" required />
+            </div>
+            <div class="form-group">
+              <label for="edit-item-description">Description:</label>
+              <textarea id="edit-item-description" required></textarea>
+            </div>
+            <button type="submit" class="primary-button">Save Changes</button>
+            <button id="delete-item-button" class="primary-button">
+              Delete Item
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- ORDER DETAIL MODAL -->
+      <div id="order-detail-modal" class="modal" style="display: none">
+        <div class="modal-content">
+          <span class="close order-modal-close">&times;</span>
+          <h2>Order Details</h2>
+          <div id="order-detail-content"></div>
+        </div>
+      </div>
+
+      <!-- AUTH MODAL -->
+      <div id="auth-modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2 id="auth-modal-title">Login</h2>
+          <form id="auth-form">
+            <div
+              class="form-group"
+              id="signup-name-group"
+              style="display: none"
+            >
+              <label for="phone-number">Phone Number:</label>
+              <input type="tel" id="auth-phone-number" name="phone-number" />
+            </div>
+            <div class="form-group">
+              <label for="username">Username:</label>
+              <input type="text" id="auth-username" name="username" required />
+            </div>
+            <div class="form-group">
+              <label for="password">Password:</label>
+              <input
+                type="password"
+                id="auth-password"
+                name="password"
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              class="primary-button"
+              id="auth-submit-button"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script src="scripts/index.js"></script>
+    <script src="scripts/dashboard.js"></script>
+    <script src="scripts/checkout.js"></script>
+    <script src="scripts/orderHistory.js"></script>
+    <script src="scripts/profile.js"></script>
   </body>
 </html>
